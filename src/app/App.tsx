@@ -1055,7 +1055,7 @@ export default function App() {
               <div
                 ref={carouselRef}
                 onScroll={handleCarouselScroll}
-                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4 snap-x snap-mandatory pt-4 pb-6 md:py-0"
+                className="flex overflow-x-auto md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4 snap-x snap-mandatory pt-4 pb-6 md:py-0"
               >
                 {EMOTIONS.map((emotion, index) => (
                   <div
