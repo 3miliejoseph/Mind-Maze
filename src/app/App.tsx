@@ -704,10 +704,10 @@ export default function App() {
                     color: "rgba(240,238,232,0.69)",
                   }}
                 >
-                  Mind Maze is a browser-based installation where anyone in the world
-                  can walk door-by-door through nine emotional environments synthesized
-                  directly from how real people describe those feelings, requiring no
-                  ticket, no travel, just a device and a willingness to look inward.
+                  Mind Maze is a browser-based installation where visitors walk
+                  door-by-door through nine emotional environments synthesized
+                  from real stories. No ticket, no travel—just a device and a
+                  willingness to look inward.
                 </p>
 
                 {/* Placeholder images */}
@@ -1140,7 +1140,7 @@ export default function App() {
                 {
                   index: "01",
                   title: "Why AI is the Right Medium",
-                  body: "Nine rooms means nine distinct emotional environments, each built from how real people describe that feeling rather than my own interpretation alone. Building that by hand in traditional 3D software isn't realistic in six weeks — each room would take weeks on its own, and I'd be working from a single point of view rather than the range of descriptions I'm pulling from research and community language. Flow solves two specific problems: it can generate a full environment — lighting, atmosphere, motion — directly from that source material, and its batch tools let me apply the same adjustment across all nine rooms at once instead of redoing each one by hand. That's what makes nine consistent, cohesive rooms feasible within six weeks — especially with the cohort's tool workshops and 1:1 mentor office hours to work through the harder technical problems as they come up.",
+                  body: "Building nine distinct, research-backed environments by hand in 3D software is unfeasible in six weeks and limits the piece to a single point of view. Google Flow solves this: it generates rich atmospheric, moving spaces directly from our descriptive source data, while its batch tools allow adjustments to be synced across all nine rooms simultaneously. This pipeline turns a multi-month project into a cohesive, six-week installation.",
                   bullets: null,
                 },
                 {
@@ -1170,8 +1170,8 @@ export default function App() {
                   title: "Anticipated Technical Risks & Mitigations",
                   body: null,
                   bullets: [
-                    { label: "Precise door placement on the final frame", text: "Since the exit door's click-target is tied to a fixed position in the video frame, each clip is generated and reviewed to confirm the door lands in a consistent, clearly clickable spot before that position is hard-coded into the frontend." },
-                    { label: "Seamless clip-to-clip continuity", text: "Each room's video is generated to end on the exact framing the next room's video begins with — same door, same angle — treated as a deliberate matching pass between clips, not left to chance." },
+                    { label: "Precise door placement on the final frame", text: "Exit doors are pre-rendered in consistent positions in each video clip, ensuring their absolute click targets map correctly in the frontend layout." },
+                    { label: "Seamless clip-to-clip continuity", text: "Every clip is generated to start precisely where the previous one ends (matching the door frame and camera angle) for seamless transition continuity." },
                     { label: "Preloading for seamlessness", text: "The next room's video is preloaded while the visitor is still watching the current one, so clicking the door never stalls on load." },
                     { label: "Full-tier generation", text: "Final assets are generated on the AI Ultra tier (via the program's included promo code) specifically to avoid visible watermarking on the finished art piece." },
                     { label: "Early testing on higher-risk prompts", text: "Rooms with more sensitive imagery are prototyped early to confirm they generate cleanly before the rest of the pipeline depends on that visual direction." },
@@ -1507,10 +1507,10 @@ export default function App() {
                     marginBottom: "1.5rem",
                   }}
                 >
-                  Mind Maze is not trying to replace what a physical exhibition can do. I'm
-                  trying to reach the people who can't get to one. Mind Maze takes real,
-                  collective human language and turns it into something you can walk through,
-                  built with Google Flow. Art that anyone can feel.
+                  Mind Maze doesn't replace the physical gallery; it expands access to
+                  those who cannot attend. By translating collective human language into
+                  interactive, walkthrough spaces using Google Flow, we create art that
+                  anyone can feel.
                 </p>
               </div>
             </div>
