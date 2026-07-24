@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import ParticleBrain from "../components/ParticleBrain";
 import "../shaders/ParticleMaterial";
+import { useIsMobile } from "./components/ui/use-mobile";
 
 const NAV_ITEMS = [
   { id: "idea", label: "IDEA", number: "01" },
@@ -236,8 +237,9 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
 }
 
 function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: () => void; isActive?: boolean }) {
+  const isMobile = useIsMobile();
   const [hovered, setHovered] = useState(false);
-  const showActive = hovered || isActive;
+  const showActive = hovered || (isMobile && isActive);
 
   return (
     <div
@@ -291,22 +293,22 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
       <div className="space-y-4 md:space-y-5">
         <div>
           <p
+            className="mb-1 md:mb-[6px]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "4px",
             }}
           >
             Color & Texture
           </p>
           <p
+            className="leading-normal md:leading-[1.75]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.5,
               color: "rgba(240,238,232,0.49)",
             }}
           >
@@ -316,22 +318,22 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
 
         <div>
           <p
+            className="mb-1 md:mb-[6px]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "4px",
             }}
           >
             Environment
           </p>
           <p
+            className="leading-normal md:leading-[1.75]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.5,
               color: "rgba(240,238,232,0.49)",
             }}
           >
@@ -341,22 +343,22 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
 
         <div>
           <p
+            className="mb-1 md:mb-[6px]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "4px",
             }}
           >
             Audio
           </p>
           <p
+            className="leading-normal md:leading-[1.75]"
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.5,
               color: "rgba(240,238,232,0.42)",
               fontStyle: "italic",
             }}
@@ -1053,7 +1055,7 @@ export default function App() {
               <div
                 ref={carouselRef}
                 onScroll={handleCarouselScroll}
-                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 snap-x snap-mandatory pt-4 pb-6 md:py-0"
+                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4 snap-x snap-mandatory pt-4 pb-6 md:py-0"
               >
                 {EMOTIONS.map((emotion, index) => (
                   <div
