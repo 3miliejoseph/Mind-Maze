@@ -200,7 +200,7 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
             fontFamily: "'DM Mono', monospace",
             fontSize: "10px",
             letterSpacing: "0.4em",
-            color: "rgba(255,255,255,0.4)",
+            color: "rgba(255,255,255,0.55)",
             textTransform: "uppercase",
             marginBottom: "10px",
           }}>
@@ -220,19 +220,19 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
           </h2>
 
           <div style={{ marginBottom: "20px" }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.18)", textTransform: "uppercase", marginBottom: "6px" }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
               Color &amp; Texture
             </p>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.38)" }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
               {emotion.metric}
             </p>
           </div>
 
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "20px" }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.18)", textTransform: "uppercase", marginBottom: "6px" }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
               Environment
             </p>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.38)" }}>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
               {emotion.visual}
             </p>
           </div>
@@ -243,7 +243,7 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
           style={{
             background: "none",
             border: "1px solid rgba(255,255,255,0.1)",
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(255,255,255,0.51)",
             fontFamily: "'DM Mono', monospace",
             fontSize: "11px",
             letterSpacing: "0.25em",
@@ -292,7 +292,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
             textTransform: "uppercase",
             letterSpacing: "-0.01em",
             lineHeight: 1,
-            color: hovered ? emotion.accent : "rgba(240,238,232,0.65)",
+            color: hovered ? emotion.accent : "rgba(240,238,232,0.74)",
             transition: "color 0.35s",
           }}
         >
@@ -319,7 +319,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
-              color: "rgba(255,255,255,0.18)",
+              color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
               marginBottom: "6px",
             }}
@@ -331,7 +331,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
               lineHeight: 1.75,
-              color: "rgba(240,238,232,0.32)",
+              color: "rgba(240,238,232,0.49)",
             }}
           >
             {emotion.metric}
@@ -344,7 +344,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
-              color: "rgba(255,255,255,0.18)",
+              color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
               marginBottom: "6px",
             }}
@@ -356,7 +356,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
               lineHeight: 1.75,
-              color: "rgba(240,238,232,0.32)",
+              color: "rgba(240,238,232,0.49)",
             }}
           >
             {emotion.visual}
@@ -369,7 +369,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "10px",
               letterSpacing: "0.35em",
-              color: "rgba(255,255,255,0.18)",
+              color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
               marginBottom: "6px",
             }}
@@ -381,7 +381,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
               lineHeight: 1.75,
-              color: "rgba(240,238,232,0.22)",
+              color: "rgba(240,238,232,0.42)",
               fontStyle: "italic",
             }}
           >
@@ -464,7 +464,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "10px",
                     letterSpacing: "0.2em",
-                    color: isActive ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.15)",
+                    color: isActive ? "rgba(255,255,255,0.51)" : "rgba(255,255,255,0.36)",
                     transition: "color 0.3s",
                   }}
                 >
@@ -477,7 +477,7 @@ export default function App() {
                     letterSpacing: "0.25em",
                     writingMode: "vertical-rl",
                     transform: "rotate(180deg)",
-                    color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.18)",
+                    color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.39)",
                     transition: "color 0.3s",
                     fontWeight: isActive ? 500 : 400,
                   }}
@@ -562,7 +562,7 @@ export default function App() {
                   fontSize: "clamp(14px, 1.6vw, 20px)",
                   fontWeight: 400,
                   letterSpacing: "0.08em",
-                  color: "rgba(240,238,232,0.38)",
+                  color: "rgba(240,238,232,0.54)",
                   textTransform: "uppercase",
                   marginBottom: "1rem",
                   maxWidth: "440px",
@@ -577,7 +577,7 @@ export default function App() {
                   fontFamily: "'DM Mono', monospace",
                   fontSize: "13px",
                   letterSpacing: "0.1em",
-                  color: "rgba(240,238,232,0.28)",
+                  color: "rgba(240,238,232,0.46)",
                   marginBottom: "3rem",
                 }}
               >
@@ -591,7 +591,7 @@ export default function App() {
                   fontFamily: "'DM Mono', monospace",
                   fontSize: "15px",
                   lineHeight: 1.95,
-                  color: "rgba(240,238,232,0.38)",
+                  color: "rgba(240,238,232,0.54)",
                   maxWidth: "500px",
                 }}
               >
@@ -633,7 +633,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.4em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     display: "block",
                     marginBottom: "12px",
@@ -667,7 +667,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.35em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     marginBottom: "24px",
                   }}
@@ -679,7 +679,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "15px",
                     lineHeight: 2,
-                    color: "rgba(240,238,232,0.58)",
+                    color: "rgba(240,238,232,0.69)",
                   }}
                 >
                   Mind Maze is a browser-based installation where anyone in the world
@@ -730,7 +730,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.35em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     marginBottom: "24px",
                   }}
@@ -742,7 +742,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "15px",
                     lineHeight: 2,
-                    color: "rgba(240,238,232,0.58)",
+                    color: "rgba(240,238,232,0.69)",
                     marginBottom: "1.5rem",
                   }}
                 >
@@ -760,7 +760,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "15px",
                     lineHeight: 2,
-                    color: "rgba(240,238,232,0.58)",
+                    color: "rgba(240,238,232,0.69)",
                     marginBottom: "1.5rem",
                   }}
                 >
@@ -779,7 +779,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "15px",
                     lineHeight: 2,
-                    color: "rgba(240,238,232,0.58)",
+                    color: "rgba(240,238,232,0.69)",
                   }}
                 >
                   Google Flow takes that research and turns it into the actual environments —
@@ -818,7 +818,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.4em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     display: "block",
                     marginBottom: "12px",
@@ -852,7 +852,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "10px",
                     letterSpacing: "0.3em",
-                    color: "rgba(255,255,255,0.15)",
+                    color: "rgba(255,255,255,0.36)",
                     textTransform: "uppercase",
                     writingMode: "vertical-rl",
                     transform: "rotate(180deg)",
@@ -1135,7 +1135,7 @@ export default function App() {
                     alignItems: "start",
                   }}
                 >
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.25em", color: "rgba(255,255,255,0.18)", paddingTop: "6px" }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.25em", color: "rgba(255,255,255,0.39)", paddingTop: "6px" }}>
                     {item.index}
                   </span>
                   <div>
@@ -1143,7 +1143,7 @@ export default function App() {
                       {item.title}
                     </p>
                     {item.body && (
-                      <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "15px", lineHeight: 2, color: "rgba(240,238,232,0.38)" }}>
+                      <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "15px", lineHeight: 2, color: "rgba(240,238,232,0.54)" }}>
                         {item.body}
                       </p>
                     )}
@@ -1152,10 +1152,10 @@ export default function App() {
                         {item.bullets.map((b) => (
                           <div key={b.label} style={{ display: "grid", gridTemplateColumns: b.sub ? "16px 160px 1fr" : "160px 1fr", gap: "16px" }}>
                             {b.sub && <div />}
-                            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "rgba(240,238,232,0.55)", fontWeight: 500, paddingTop: "1px", lineHeight: 1.8 }}>
+                            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "rgba(240,238,232,0.66)", fontWeight: 500, paddingTop: "1px", lineHeight: 1.8 }}>
                               {b.label}
                             </p>
-                            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.85, color: "rgba(240,238,232,0.32)" }}>
+                            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.85, color: "rgba(240,238,232,0.49)" }}>
                               {b.text}
                             </p>
                           </div>
@@ -1191,7 +1191,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.4em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     display: "block",
                     marginBottom: "12px",
@@ -1306,7 +1306,7 @@ export default function App() {
                         fontFamily: "'DM Mono', monospace",
                         fontSize: "15px",
                         letterSpacing: "0.3em",
-                        color: "rgba(255,255,255,0.18)",
+                        color: "rgba(255,255,255,0.39)",
                         display: "block",
                         marginBottom: "8px",
                       }}
@@ -1322,7 +1322,7 @@ export default function App() {
                         fontSize: "15px",
                         fontWeight: 700,
                         textTransform: "uppercase",
-                        color: "rgba(240,238,232,0.6)",
+                        color: "rgba(240,238,232,0.7)",
                         lineHeight: 1.25,
                         marginBottom: "20px",
                         letterSpacing: "0.02em",
@@ -1337,14 +1337,14 @@ export default function App() {
                           style={{
                             fontFamily: "'DM Mono', monospace",
                             fontSize: "15px",
-                            color: "rgba(255,255,255,0.38)",
+                            color: "rgba(255,255,255,0.54)",
                             lineHeight: 1.7,
                             display: "flex",
                             gap: "6px",
                             alignItems: "flex-start",
                           }}
                         >
-                          <span style={{ color: "rgba(255,255,255,0.12)", flexShrink: 0 }}>—</span>
+                          <span style={{ color: "rgba(255,255,255,0.34)", flexShrink: 0 }}>—</span>
                           {task}
                         </li>
                       ))}
@@ -1377,7 +1377,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.4em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.55)",
                     textTransform: "uppercase",
                     display: "block",
                     marginBottom: "12px",
@@ -1411,7 +1411,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
                     letterSpacing: "0.3em",
-                    color: "rgba(255,255,255,0.18)",
+                    color: "rgba(255,255,255,0.39)",
                     textTransform: "uppercase",
                     lineHeight: 1.8,
                   }}
@@ -1432,14 +1432,14 @@ export default function App() {
                       style={{
                         fontFamily: "'DM Mono', monospace",
                         fontSize: "15px",
-                        color: "rgba(240,238,232,0.58)",
+                        color: "rgba(240,238,232,0.69)",
                         lineHeight: 2,
                         display: "flex",
                         gap: "8px",
                         alignItems: "flex-start",
                       }}
                     >
-                      <span style={{ color: "rgba(255,255,255,0.4)", flexShrink: 0 }}>—</span>
+                      <span style={{ color: "rgba(255,255,255,0.55)", flexShrink: 0 }}>—</span>
                       {item}
                     </li>
                   ))}
@@ -1463,8 +1463,8 @@ export default function App() {
                   style={{
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "11px",
-                    letterSpacing: "0.3em",
-                    color: "rgba(255,255,255,0.18)",
+                    letterSpacing: "0.35em",
+                    color: "rgba(255,255,255,0.39)",
                     textTransform: "uppercase",
                     lineHeight: 1.8,
                   }}
@@ -1480,7 +1480,7 @@ export default function App() {
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "15px",
                     lineHeight: 2,
-                    color: "rgba(240,238,232,0.38)",
+                    color: "rgba(240,238,232,0.54)",
                     marginBottom: "1.5rem",
                   }}
                 >
