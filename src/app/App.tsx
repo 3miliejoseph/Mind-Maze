@@ -992,10 +992,15 @@ export default function App() {
 
             {/* Moodboard masonry grid */}
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 snap-x snap-mandatory pb-4 md:pb-0"
             >
               {EMOTIONS.map((emotion) => (
-                <EmotionCard key={emotion.name} emotion={emotion} onOpen={() => setOpenEmotion(emotion)} />
+                <div
+                  key={emotion.name}
+                  className="w-[85vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:max-w-none md:flex-shrink"
+                >
+                  <EmotionCard emotion={emotion} onOpen={() => setOpenEmotion(emotion)} />
+                </div>
               ))}
             </div>
           </div>
