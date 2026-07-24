@@ -77,8 +77,10 @@ export default function ParticleBrain() {
 
     if (!geometry) return null;
 
-    // Responsive scale based on viewport width
-    const responsiveScale = Math.min(size.width, size.height) > 768 ? 1.5 : 1.0;
+    // Responsive scale based on viewport width and aspect ratio to prevent cropping on mobile
+    const aspect = size.width / size.height;
+    const baseScale = Math.min(size.width, size.height) > 768 ? 1.5 : 1.0;
+    const responsiveScale = aspect < 1 ? baseScale * Math.max(0.65, aspect) : baseScale;
 
     return (
 

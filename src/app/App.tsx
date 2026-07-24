@@ -441,15 +441,9 @@ export default function App() {
     >
       {/* ── Fixed Left Navigation ── */}
       <nav
-        className="fixed left-0 top-0 h-full z-50 flex flex-col items-center justify-center"
-        style={{
-          width: "68px",
-          borderRight: "1px solid rgba(255,255,255,0.05)",
-          background: "rgba(10,10,10,0.92)",
-          backdropFilter: "blur(12px)",
-        }}
+        className="fixed left-0 bottom-0 w-full h-[56px] z-50 flex flex-row items-center justify-around border-t border-white/5 bg-[rgba(10,10,10,0.92)] backdrop-blur-md lg:bottom-auto lg:top-0 lg:h-full lg:w-[68px] lg:flex-col lg:justify-center lg:border-r lg:border-t-0"
       >
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-row lg:flex-col items-center justify-around lg:justify-center w-full lg:w-auto gap-4 lg:gap-10">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -471,6 +465,7 @@ export default function App() {
                   {item.number}
                 </span>
                 <span
+                  className="hidden lg:inline"
                   style={{
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "10px",
@@ -485,6 +480,7 @@ export default function App() {
                   {item.label}
                 </span>
                 <div
+                  className="hidden lg:block"
                   style={{
                     width: 1,
                     height: isActive ? 18 : 0,
@@ -500,7 +496,7 @@ export default function App() {
       </nav>
 
       {/* ── Main Content ── */}
-      <main style={{ marginLeft: "68px" }}>
+      <main className="ml-0 pb-[56px] lg:ml-[68px] lg:pb-0">
 
         {/* ═══════════════════════ HERO ═══════════════════════ */}
         <section
@@ -511,12 +507,9 @@ export default function App() {
         >
           {/* Left: Title block */}
           <div
-            className="flex flex-col pt-16 lg:pt-8"
+            className="flex flex-col pl-6 pr-6 pt-12 pb-12 lg:pl-16 lg:pr-12 lg:pt-8 lg:pb-12 border-b lg:border-b-0 lg:border-r order-2 lg:order-1"
             style={{ 
-              paddingLeft: "64px",
-              paddingRight: "48px",
-              paddingBottom: "48px",
-              borderRight: "1px solid rgba(255,255,255,0.05)",
+              borderColor: "rgba(255,255,255,0.05)",
             }}
           >
             {/* Top metadata */}
@@ -606,26 +599,23 @@ export default function App() {
           </div>
 
           {/* Right: BrainCanvas placeholder */}
-          <div style={{ minHeight: "100vh" }}>
-            <BrainCanvas />
+          <div className="flex flex-col h-auto lg:h-auto lg:min-h-screen order-1 lg:order-2">
+            <div className="h-[50vh] lg:h-full lg:flex-1">
+              <BrainCanvas />
+            </div>
           </div>
         </section>
 
         {/* ═══════════════════════ SECTION 01 — IDEA ═══════════════════════ */}
         <section
           id="idea"
-          style={{ padding: "128px 64px", borderTop: "1px solid rgba(255,255,255,0.05)" }}
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t"
+          style={{ borderTopColor: "rgba(255,255,255,0.05)" }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             {/* Section header */}
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -660,7 +650,7 @@ export default function App() {
             </div>
 
             {/* Two-column editorial body */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
               <div>
                 <p
                   style={{
@@ -697,26 +687,28 @@ export default function App() {
                       overflow: "hidden",
                       display: "inline-block",
                       maxWidth: "280px",
+                      width: "100%",
                     }}
                   >
                     <img 
-                      src="/vertical.avif" 
+                       src="/vertical.avif" 
                       alt="Vertical moodboard image" 
                       style={{ display: "block", maxWidth: "100%", height: "auto" }}
                     />
                   </div>
                   <div
+                    className="ml-0 md:ml-10"
                     style={{
                       background: "rgba(255,255,255,0.03)",
                       border: "1px solid rgba(255,255,255,0.05)",
                       overflow: "hidden",
                       display: "inline-block",
                       maxWidth: "440px",
-                      marginLeft: "40px",
+                      width: "100%",
                     }}
                   >
                     <img 
-                      src="/horizontal.png" 
+                       src="/horizontal.png" 
                       alt="Horizontal moodboard image" 
                       style={{ display: "block", maxWidth: "100%", height: "auto" }}
                     />
@@ -796,21 +788,14 @@ export default function App() {
         {/* ═══════════════════════ SECTION 02 — MATRIX ═══════════════════════ */}
         <section
           id="matrix"
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t bg-[#0c0c0c]"
           style={{
-            padding: "128px 64px",
-            borderTop: "1px solid rgba(255,255,255,0.05)",
-            background: "#0c0c0c",
+            borderTopColor: "rgba(255,255,255,0.05)",
           }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -845,17 +830,16 @@ export default function App() {
             </div>
 
             {/* Scientific essay — sidebar label + body */}
-            <div style={{ display: "grid", gridTemplateColumns: "72px 1fr", gap: "48px" }}>
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-[72px_1fr] gap-6 md:gap-12">
+              <div className="pb-4 md:pb-0 border-b border-white/5 md:border-b-0">
                 <span
+                  className="block md:vertical-text"
                   style={{
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "10px",
                     letterSpacing: "0.3em",
                     color: "rgba(255,255,255,0.36)",
                     textTransform: "uppercase",
-                    writingMode: "vertical-rl",
-                    transform: "rotate(180deg)",
                   }}
                 >
                   The Journey
@@ -954,17 +938,12 @@ export default function App() {
         {/* ═══════════════════════ SECTION 03 — SPECTRUM ═══════════════════════ */}
         <section
           id="spectrum"
-          style={{ padding: "128px 64px", borderTop: "1px solid rgba(255,255,255,0.05)" }}
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t"
+          style={{ borderTopColor: "rgba(255,255,255,0.05)" }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -1003,7 +982,7 @@ export default function App() {
               fontFamily: "'DM Mono', monospace",
               fontSize: "15px",
               lineHeight: 2,
-              color: "rgba(240,238,232,0.38)",
+              color: "rgba(240,238,232,0.54)",
               maxWidth: "1200px",
               marginBottom: "48px",
             }}>
@@ -1013,11 +992,7 @@ export default function App() {
 
             {/* Moodboard masonry grid */}
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "16px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
             >
               {EMOTIONS.map((emotion) => (
                 <EmotionCard key={emotion.name} emotion={emotion} onOpen={() => setOpenEmotion(emotion)} />
@@ -1029,21 +1004,14 @@ export default function App() {
         {/* ═══════════════════════ SECTION 04 — CRAFT ═══════════════════════ */}
         <section
           id="craft"
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t bg-[#0c0c0c]"
           style={{
-            padding: "128px 64px",
-            borderTop: "1px solid rgba(255,255,255,0.05)",
-            background: "#0c0c0c",
+            borderTopColor: "rgba(255,255,255,0.05)",
           }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -1125,11 +1093,8 @@ export default function App() {
               ].map((item, i) => (
                 <div
                   key={item.index}
+                  className="grid grid-cols-[48px_1fr] gap-6 md:gap-10 py-8 md:py-12"
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "48px 1fr",
-                    gap: "40px",
-                    padding: "48px 0",
                     borderBottom: "1px solid rgba(255,255,255,0.05)",
                     borderTop: i === 0 ? "1px solid rgba(255,255,255,0.05)" : "none",
                     alignItems: "start",
@@ -1150,8 +1115,8 @@ export default function App() {
                     {item.bullets && (
                       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                         {item.bullets.map((b) => (
-                          <div key={b.label} style={{ display: "grid", gridTemplateColumns: b.sub ? "16px 160px 1fr" : "160px 1fr", gap: "16px" }}>
-                            {b.sub && <div />}
+                          <div key={b.label} className={b.sub ? "grid grid-cols-1 md:grid-cols-[16px_160px_1fr] gap-2 md:gap-4" : "grid grid-cols-1 md:grid-cols-[160px_1fr] gap-2 md:gap-4"}>
+                            {b.sub && <div className="hidden md:block" />}
                             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "rgba(240,238,232,0.66)", fontWeight: 500, paddingTop: "1px", lineHeight: 1.8 }}>
                               {b.label}
                             </p>
@@ -1173,17 +1138,12 @@ export default function App() {
         {/* ═══════════════════════ SECTION 05 — TIMELINE ═══════════════════════ */}
         <section
           id="timeline"
-          style={{ padding: "128px 64px", borderTop: "1px solid rgba(255,255,255,0.05)" }}
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t"
+          style={{ borderTopColor: "rgba(255,255,255,0.05)" }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -1219,21 +1179,10 @@ export default function App() {
 
             {/* Vertical timeline */}
             <div
-              style={{
-                position: "relative",
-                paddingLeft: "52px",
-                marginBottom: "80px",
-              }}
+              className="relative pl-6 md:pl-12 mb-12 md:mb-20"
             >
               <div
-                style={{
-                  position: "absolute",
-                  left: "24px",
-                  top: 0,
-                  bottom: 0,
-                  width: "2px",
-                  background: "rgba(255,255,255,0.08)",
-                }}
+                className="absolute left-2 md:left-6 top-0 bottom-0 w-[2px] bg-white/[0.08]"
               />
               {[
                 {
@@ -1291,16 +1240,12 @@ export default function App() {
               ].map((item, i) => (
                 <div
                   key={item.week}
+                  className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-4 md:gap-7 py-6 md:py-9 border-b border-white/5 relative"
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "160px 1fr",
-                    gap: "28px",
-                    padding: "36px 0",
                     borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.05)" : "none",
-                    position: "relative",
                   }}
                 >
-                  <div style={{ position: "relative", paddingLeft: "52px" }}>
+                  <div className="relative pl-0">
                     <span
                       style={{
                         fontFamily: "'DM Mono', monospace",
@@ -1359,17 +1304,12 @@ export default function App() {
         {/* ═══════════════════════ SECTION 06 — RESULT ═══════════════════════ */}
         <section
           id="result"
-          style={{ padding: "128px 64px", borderTop: "1px solid rgba(255,255,255,0.05)" }}
+          className="py-16 px-6 md:py-24 md:px-16 lg:py-32 lg:px-20 border-t"
+          style={{ borderTopColor: "rgba(255,255,255,0.05)" }}
         >
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "320px 1fr",
-                gap: "32px",
-                alignItems: "flex-end",
-                marginBottom: "80px",
-              }}
+              className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8 items-end mb-12 md:mb-20"
             >
               <div>
                 <span
@@ -1404,7 +1344,7 @@ export default function App() {
             </div>
 
             {/* Result content */}
-            <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "64px" }}>
+            <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-16">
               <div>
                 <p
                   style={{
@@ -1449,13 +1389,9 @@ export default function App() {
 
             {/* Feasibility note */}
             <div
+              className="border border-white/7 p-6 md:p-12 md:p-14 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-16 mt-12 md:mt-16"
               style={{
-                border: "1px solid rgba(255,255,255,0.07)",
-                padding: "48px 56px",
-                display: "grid",
-                gridTemplateColumns: "200px 1fr",
-                gap: "64px",
-                marginTop: "64px",
+                borderColor: "rgba(255,255,255,0.07)",
               }}
             >
               <div>
@@ -1496,9 +1432,9 @@ export default function App() {
 
         {/* ── Footer ── */}
         <footer
+          className="border-t py-8 px-6 md:py-12 md:px-16 lg:px-20"
           style={{
-            borderTop: "1px solid rgba(255,255,255,0.05)",
-            padding: "48px 64px",
+            borderTopColor: "rgba(255,255,255,0.05)",
           }}
         >
           <div
@@ -1549,6 +1485,12 @@ export default function App() {
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 0; height: 0; }
         * { scrollbar-width: none; }
+        @media (min-width: 768px) {
+          .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+          }
+        }
       `}</style>
     </div>
   );
