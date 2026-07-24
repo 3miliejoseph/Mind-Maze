@@ -136,126 +136,101 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
   return (
     <div
       onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 1000,
-        background: "rgba(0,0,0,0.88)",
-        backdropFilter: "blur(8px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px",
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-12 bg-black/92 backdrop-blur-md"
     >
       {/* Modal container */}
       <div
         onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-[1200px] h-[85vh] md:h-[68vh] grid grid-cols-1 md:grid-cols-[1fr_280px] overflow-hidden bg-[#0d0d0d] border"
         style={{
-          width: "100%",
-          maxWidth: "1200px",
-          height: "68vh",
-          display: "grid",
-          gridTemplateColumns: "1fr 280px",
-          border: `1px solid ${emotion.glow}25`,
-          overflow: "hidden",
+          borderColor: `${emotion.glow}25`,
         }}
       >
-      {/* Image panel */}
-      <div
-        style={{
-          position: "relative",
-          background: "#0d0d0d",
-          borderRight: `1px solid ${emotion.glow}20`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        <img
-          src={`/Moodboards/${emotion.name.charAt(0) + emotion.name.slice(1).toLowerCase()}.png`}
-          alt={`${emotion.name} moodboard`}
+        {/* Image panel */}
+        <div
+          className="relative bg-[#0d0d0d] flex items-center justify-center overflow-hidden h-[45vh] md:h-full border-b md:border-b-0 md:border-r"
           style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      </div>
-
-      {/* Right sidebar */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "32px 24px",
-          background: "#0a0a0a",
-          overflowY: "auto",
-        }}
-      >
-        <div>
-          <p style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: "10px",
-            letterSpacing: "0.4em",
-            color: "rgba(255,255,255,0.55)",
-            textTransform: "uppercase",
-            marginBottom: "10px",
-          }}>
-            Look &amp; Feel
-          </p>
-          <h2 style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontSize: "42px",
-            fontWeight: 900,
-            textTransform: "uppercase",
-            letterSpacing: "-0.01em",
-            lineHeight: 1,
-            color: emotion.accent,
-            marginBottom: "28px",
-          }}>
-            {emotion.name}
-          </h2>
-
-          <div style={{ marginBottom: "20px" }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
-              Color &amp; Texture
-            </p>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
-              {emotion.metric}
-            </p>
-          </div>
-
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "20px" }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
-              Environment
-            </p>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
-              {emotion.visual}
-            </p>
-          </div>
-        </div>
-
-        <button
-          onClick={onClose}
-          style={{
-            background: "none",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "rgba(255,255,255,0.51)",
-            fontFamily: "'DM Mono', monospace",
-            fontSize: "11px",
-            letterSpacing: "0.25em",
-            padding: "12px",
-            cursor: "pointer",
-            textTransform: "uppercase",
-            width: "100%",
+            borderBottomColor: `${emotion.glow}20`,
+            borderRightColor: `${emotion.glow}20`,
           }}
         >
-          ESC / Close
-        </button>
-      </div>
+          <img
+            src={`/Moodboards/${emotion.name.charAt(0) + emotion.name.slice(1).toLowerCase()}.png`}
+            alt={`${emotion.name} moodboard`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+
+        {/* Right sidebar */}
+        <div
+          className="flex flex-col justify-between p-6 md:p-8 bg-[#0a0a0a] overflow-y-auto h-[40vh] md:h-full"
+        >
+          <div>
+            <p style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "10px",
+              letterSpacing: "0.4em",
+              color: "rgba(255,255,255,0.55)",
+              textTransform: "uppercase",
+              marginBottom: "10px",
+            }}>
+              Look &amp; Feel
+            </p>
+            <h2 style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: "42px",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "-0.01em",
+              lineHeight: 1,
+              color: emotion.accent,
+              marginBottom: "28px",
+            }}>
+              {emotion.name}
+            </h2>
+
+            <div style={{ marginBottom: "20px" }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
+                Color &amp; Texture
+              </p>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
+                {emotion.metric}
+              </p>
+            </div>
+
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "20px", marginBottom: "20px" }}>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.39)", textTransform: "uppercase", marginBottom: "6px" }}>
+                Environment
+              </p>
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", lineHeight: 1.8, color: "rgba(240,238,232,0.54)" }}>
+                {emotion.visual}
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.51)",
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "11px",
+              letterSpacing: "0.25em",
+              padding: "12px",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              width: "100%",
+              marginTop: "auto",
+            }}
+          >
+            ESC / Close
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -1035,10 +1010,10 @@ export default function App() {
               {activeEmotionIndex > 0 && (
                 <button
                   onClick={() => scrollToIndex(activeEmotionIndex - 1)}
-                  className="absolute left-[-12px] top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 active:text-white md:hidden shadow-lg shadow-black/50"
+                  className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-10 flex items-center justify-center text-white/40 active:text-white md:hidden"
                   aria-label="Previous room"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.0} stroke="currentColor" className="w-7 h-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                   </svg>
                 </button>
@@ -1048,10 +1023,10 @@ export default function App() {
               {activeEmotionIndex < EMOTIONS.length - 1 && (
                 <button
                   onClick={() => scrollToIndex(activeEmotionIndex + 1)}
-                  className="absolute right-[-12px] top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 active:text-white md:hidden shadow-lg shadow-black/50"
+                  className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-10 flex items-center justify-center text-white/40 active:text-white md:hidden"
                   aria-label="Next room"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.0} stroke="currentColor" className="w-7 h-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                   </svg>
                 </button>
@@ -1060,12 +1035,12 @@ export default function App() {
               <div
                 ref={carouselRef}
                 onScroll={handleCarouselScroll}
-                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 snap-x snap-mandatory pb-4 md:pb-0"
+                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 snap-x snap-mandatory pb-4 md:pb-0"
               >
                 {EMOTIONS.map((emotion, index) => (
                   <div
                     key={emotion.name}
-                    className="w-[85vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:max-w-none md:flex-shrink"
+                    className="w-full px-4 flex-shrink-0 snap-center md:px-0 md:w-auto md:max-w-none md:flex-shrink"
                   >
                     <EmotionCard 
                       emotion={emotion} 
