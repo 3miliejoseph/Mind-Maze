@@ -522,13 +522,13 @@ export default function App() {
         >
           {/* Left: Title block */}
           <div
-            className="flex flex-col pl-6 pr-6 pt-12 pb-12 lg:pl-16 lg:pr-12 lg:pt-8 lg:pb-12 border-b lg:border-b-0 lg:border-r order-2 lg:order-1"
+            className="flex flex-col pl-6 pr-6 pt-6 pb-12 lg:pl-16 lg:pr-12 lg:pt-8 lg:pb-12 border-b lg:border-b-0 lg:border-r order-2 lg:order-1"
             style={{ 
               borderColor: "rgba(255,255,255,0.05)",
             }}
           >
             {/* Top metadata */}
-            <div className="flex items-center gap-3 mb-4 lg:mb-2">
+            <div className="hidden lg:flex items-center gap-3 mb-4 lg:mb-2">
               <div
                 style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(255,255,255,0.3)" }}
               />
@@ -615,7 +615,24 @@ export default function App() {
 
           {/* Right: BrainCanvas placeholder */}
           <div className="flex flex-col h-auto lg:h-auto lg:min-h-screen order-1 lg:order-2">
-            <div className="h-[58vh] lg:h-full lg:flex-1">
+            {/* Top metadata (mobile only, rendered above the brain) */}
+            <div className="flex lg:hidden items-center gap-3 px-6 pt-8 mb-2">
+              <div
+                style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(255,255,255,0.3)" }}
+              />
+              <span
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: "11px",
+                  letterSpacing: "0.4em",
+                  color: "rgba(255,255,255,1)",
+                  textTransform: "uppercase",
+                }}
+              >
+                Flow Sessions — Pitch Deck 2026
+              </span>
+            </div>
+            <div className="h-[45vh] lg:h-full lg:flex-1">
               <BrainCanvas />
             </div>
           </div>
