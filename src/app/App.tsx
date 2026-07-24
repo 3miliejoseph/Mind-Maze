@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
@@ -261,8 +261,9 @@ function MoodboardModal({ emotion, onClose }: { emotion: Emotion; onClose: () =>
   );
 }
 
-function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void }) {
+function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: () => void; isActive?: boolean }) {
   const [hovered, setHovered] = useState(false);
+  const showActive = hovered || isActive;
 
   return (
     <div
@@ -270,15 +271,15 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
       onMouseLeave={() => setHovered(false)}
       onClick={onOpen}
       style={{
-        border: `1px solid ${hovered ? emotion.glow + "50" : "rgba(255,255,255,0.06)"}`,
+        border: `1px solid ${showActive ? emotion.glow + "50" : "rgba(255,255,255,0.06)"}`,
         padding: "28px",
         cursor: "pointer",
-        transform: hovered ? "scale(1.015)" : "scale(1)",
+        transform: showActive ? "scale(1.015)" : "scale(1)",
         transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-        boxShadow: hovered
+        boxShadow: showActive
           ? `0 0 48px ${emotion.glow}18, inset 0 0 60px ${emotion.glow}05`
           : "none",
-        background: hovered
+        background: showActive
           ? `linear-gradient(140deg, ${emotion.glow}07 0%, transparent 70%)`
           : "transparent",
       }}
@@ -292,7 +293,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
             textTransform: "uppercase",
             letterSpacing: "-0.01em",
             lineHeight: 1,
-            color: hovered ? emotion.accent : "rgba(240,238,232,0.74)",
+            color: showActive ? emotion.accent : "rgba(240,238,232,0.74)",
             transition: "color 0.35s",
           }}
         >
@@ -304,7 +305,7 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
             height: 7,
             borderRadius: "50%",
             background: emotion.glow,
-            opacity: hovered ? 1 : 0.18,
+            opacity: showActive ? 1 : 0.18,
             transition: "opacity 0.35s",
             marginTop: 10,
             flexShrink: 0,
@@ -396,6 +397,44 @@ function EmotionCard({ emotion, onOpen }: { emotion: Emotion; onOpen: () => void
 export default function App() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [openEmotion, setOpenEmotion] = useState<Emotion | null>(null);
+  const [activeEmotionIndex, setActiveEmotionIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const handleCarouselScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const width = container.offsetWidth;
+    if (width === 0) return;
+    const children = Array.from(container.children) as HTMLElement[];
+    let closestIndex = 0;
+    let minDiff = Infinity;
+    const containerCenter = container.scrollLeft + width / 2;
+    children.forEach((child, i) => {
+      const childCenter = child.offsetLeft + child.offsetWidth / 2;
+      const diff = Math.abs(containerCenter - childCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = i;
+      }
+    });
+    setActiveEmotionIndex(closestIndex);
+  };
+
+  const scrollToIndex = (index: number) => {
+    const container = carouselRef.current;
+    if (!container) return;
+    const children = Array.from(container.children) as HTMLElement[];
+    if (children[index]) {
+      const targetScroll =
+        children[index].offsetLeft -
+        (container.offsetWidth - children[index].offsetWidth) / 2;
+      container.scrollTo({
+        left: targetScroll,
+        background: "transparent",
+        behavior: "smooth",
+      } as any);
+      setActiveEmotionIndex(index);
+    }
+  };
 
   useEffect(() => {
     const ids = NAV_ITEMS.map((n) => n.id);
@@ -990,18 +1029,68 @@ export default function App() {
               The visual style across the walkthrough comes from a dedicated moodboard for each room, locking in the lighting, tone, and composition before generation starts.
             </p>
 
-            {/* Moodboard masonry grid */}
-            <div
-              className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 snap-x snap-mandatory pb-4 md:pb-0"
-            >
-              {EMOTIONS.map((emotion) => (
-                <div
-                  key={emotion.name}
-                  className="w-[85vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:max-w-none md:flex-shrink"
+            {/* Moodboard masonry grid / Carousel */}
+            <div className="relative">
+              {/* Left Navigation Arrow */}
+              {activeEmotionIndex > 0 && (
+                <button
+                  onClick={() => scrollToIndex(activeEmotionIndex - 1)}
+                  className="absolute left-[-12px] top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 active:text-white md:hidden shadow-lg shadow-black/50"
+                  aria-label="Previous room"
                 >
-                  <EmotionCard emotion={emotion} onOpen={() => setOpenEmotion(emotion)} />
-                </div>
-              ))}
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+              )}
+              
+              {/* Right Navigation Arrow */}
+              {activeEmotionIndex < EMOTIONS.length - 1 && (
+                <button
+                  onClick={() => scrollToIndex(activeEmotionIndex + 1)}
+                  className="absolute right-[-12px] top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/60 active:text-white md:hidden shadow-lg shadow-black/50"
+                  aria-label="Next room"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              )}
+
+              <div
+                ref={carouselRef}
+                onScroll={handleCarouselScroll}
+                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 snap-x snap-mandatory pb-4 md:pb-0"
+              >
+                {EMOTIONS.map((emotion, index) => (
+                  <div
+                    key={emotion.name}
+                    className="w-[85vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:max-w-none md:flex-shrink"
+                  >
+                    <EmotionCard 
+                      emotion={emotion} 
+                      onOpen={() => setOpenEmotion(emotion)} 
+                      isActive={index === activeEmotionIndex}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation Dots */}
+              <div className="flex md:hidden justify-center items-center gap-2.5 mt-6">
+                {EMOTIONS.map((emotion, idx) => (
+                  <button
+                    key={emotion.name}
+                    onClick={() => scrollToIndex(idx)}
+                    className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+                    style={{
+                      background: idx === activeEmotionIndex ? emotion.glow : "rgba(255,255,255,0.18)",
+                      transform: idx === activeEmotionIndex ? "scale(1.2)" : "scale(1)",
+                    }}
+                    aria-label={`Go to room ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
