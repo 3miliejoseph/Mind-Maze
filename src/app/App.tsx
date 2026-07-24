@@ -257,6 +257,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
         background: showActive
           ? `linear-gradient(140deg, ${emotion.glow}07 0%, transparent 70%)`
           : "transparent",
+        height: "100%",
       }}
     >
       <div className="flex items-start justify-between mb-8">
@@ -614,7 +615,7 @@ export default function App() {
 
           {/* Right: BrainCanvas placeholder */}
           <div className="flex flex-col h-auto lg:h-auto lg:min-h-screen order-1 lg:order-2">
-            <div className="h-[50vh] lg:h-full lg:flex-1">
+            <div className="h-[58vh] lg:h-full lg:flex-1">
               <BrainCanvas />
             </div>
           </div>
@@ -1035,12 +1036,12 @@ export default function App() {
               <div
                 ref={carouselRef}
                 onScroll={handleCarouselScroll}
-                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 snap-x snap-mandatory pb-4 md:pb-0"
+                className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-0 snap-x snap-mandatory pt-4 pb-6 md:py-0"
               >
                 {EMOTIONS.map((emotion, index) => (
                   <div
                     key={emotion.name}
-                    className="w-full px-4 flex-shrink-0 snap-center md:px-0 md:w-auto md:max-w-none md:flex-shrink"
+                    className="w-full px-4 flex-shrink-0 snap-center h-[480px] md:h-auto md:px-0 md:w-auto md:max-w-none md:flex-shrink"
                   >
                     <EmotionCard 
                       emotion={emotion} 

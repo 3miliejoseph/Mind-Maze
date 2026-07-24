@@ -61,8 +61,8 @@ export default function ParticleBrain() {
 
     // Responsive scale based on viewport width and aspect ratio to prevent cropping on mobile
     const aspect = size.width / size.height;
-    const baseScale = Math.min(size.width, size.height) > 768 ? 1.5 : 1.0;
-    const responsiveScale = aspect < 1 ? baseScale * Math.max(0.65, aspect) : baseScale;
+    const baseScale = Math.min(size.width, size.height) > 768 ? 1.5 : 1.25;
+    const responsiveScale = aspect < 1 ? baseScale * Math.max(0.7, aspect) : baseScale;
 
     // Responsive point size to prevent overlapping points on small screens
     const responsivePointSize = Math.min(size.width, size.height) > 768 ? 6.0 : 3.5;
