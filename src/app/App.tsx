@@ -92,10 +92,9 @@ const EMOTIONS = [
 function BrainCanvas() {
   return (
     <div
-      className="relative w-full h-full"
+      className="relative w-full h-full lg:border-l border-white/5"
       style={{
-        background: "linear-gradient(160deg, #0d0d0d 0%, #0a0a0a 60%, #0c0a0d 100%)",
-        borderLeft: "1px solid rgba(255,255,255,0.05)",
+        background: "transparent",
       }}
     >
       <Canvas camera={{ position: [0, 0, 247.5], fov: 45 }} style={{ width: "100%", height: "100%" }}>
@@ -618,15 +617,16 @@ export default function App() {
             {/* Top metadata (mobile only, rendered above the brain) */}
             <div className="flex lg:hidden items-center gap-3 px-6 pt-8 mb-2">
               <div
-                style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(255,255,255,0.3)" }}
+                style={{ width: 5, height: 5, borderRadius: "50%", background: "rgba(255,255,255,0.3)", flexShrink: 0 }}
               />
               <span
                 style={{
                   fontFamily: "'DM Mono', monospace",
-                  fontSize: "11px",
-                  letterSpacing: "0.4em",
+                  fontSize: "10px",
+                  letterSpacing: "0.18em",
                   color: "rgba(255,255,255,1)",
                   textTransform: "uppercase",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Flow Sessions — Pitch Deck 2026
