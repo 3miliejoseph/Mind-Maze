@@ -245,9 +245,9 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onOpen}
+      className="p-5 md:p-7"
       style={{
         border: `1px solid ${showActive ? emotion.glow + "50" : "rgba(255,255,255,0.06)"}`,
-        padding: "28px",
         cursor: "pointer",
         transform: showActive ? "scale(1.015)" : "scale(1)",
         transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -260,11 +260,11 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
         height: "100%",
       }}
     >
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex items-start justify-between mb-6 md:mb-8">
         <p
           style={{
             fontFamily: "'Barlow Condensed', sans-serif",
-            fontSize: "48px",
+            fontSize: "clamp(34px, 8vw, 48px)",
             fontWeight: 900,
             textTransform: "uppercase",
             letterSpacing: "-0.01em",
@@ -289,7 +289,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
         />
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-4 md:space-y-5">
         <div>
           <p
             style={{
@@ -298,7 +298,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "6px",
+              marginBottom: "4px",
             }}
           >
             Color & Texture
@@ -307,7 +307,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.75,
+              lineHeight: 1.5,
               color: "rgba(240,238,232,0.49)",
             }}
           >
@@ -323,7 +323,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "6px",
+              marginBottom: "4px",
             }}
           >
             Environment
@@ -332,7 +332,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.75,
+              lineHeight: 1.5,
               color: "rgba(240,238,232,0.49)",
             }}
           >
@@ -348,7 +348,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
               letterSpacing: "0.35em",
               color: "rgba(255,255,255,0.39)",
               textTransform: "uppercase",
-              marginBottom: "6px",
+              marginBottom: "4px",
             }}
           >
             Audio
@@ -357,7 +357,7 @@ function EmotionCard({ emotion, onOpen, isActive }: { emotion: Emotion; onOpen: 
             style={{
               fontFamily: "'DM Mono', monospace",
               fontSize: "13px",
-              lineHeight: 1.75,
+              lineHeight: 1.5,
               color: "rgba(240,238,232,0.42)",
               fontStyle: "italic",
             }}
@@ -1041,7 +1041,7 @@ export default function App() {
                 {EMOTIONS.map((emotion, index) => (
                   <div
                     key={emotion.name}
-                    className="w-full px-4 flex-shrink-0 snap-center h-[480px] md:h-auto md:px-0 md:w-auto md:max-w-none md:flex-shrink"
+                    className="w-full px-4 flex-shrink-0 snap-center h-[530px] md:h-auto md:px-0 md:w-auto md:max-w-none md:flex-shrink"
                   >
                     <EmotionCard 
                       emotion={emotion} 
