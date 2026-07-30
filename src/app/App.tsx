@@ -1018,10 +1018,22 @@ export default function App() {
               lineHeight: 2,
               color: "rgba(240,238,232,0.54)",
               maxWidth: "1200px",
-              marginBottom: "48px",
+              marginBottom: "16px",
             }}>
               Each room is its own cinematic space, built from real sensory language people use to describe that emotion.
               The visual style across the walkthrough comes from a dedicated moodboard for each room, locking in the lighting, tone, and composition before generation starts.
+            </p>
+            <p style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "12px",
+              color: "rgba(240,238,232,0.36)",
+              marginBottom: "48px",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}>
+              <span style={{ display: "inline-block", width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "rgba(240,238,232,0.3)" }}></span>
+              Click on cards to view moodboards
             </p>
 
             {/* Moodboard masonry grid / Carousel */}
